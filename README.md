@@ -1,6 +1,9 @@
 # dash-budget_state
 forecast estimation of dash budget disbursements
 
+# usage
+    python dash-budget_state.py
+
 # sample output
 
     current time      : Thu, 28 Jan 2016 07:57:12 +0000
