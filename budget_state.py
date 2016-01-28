@@ -26,6 +26,8 @@ print "estimated minimum budget: %s" % budget
 print "{0:>16} {1:<5} {2:<22} {3:<11}".format('remaining', 'approval', 'name', 'payment')
 for pname in pay_order:
     p = proposals[pname]
+    if p["RemainingPaymentCount"] < 1:
+        continue
     if p["BlockEnd"] < now_block:
         # print " proposal %s expired" % pname
         continue
