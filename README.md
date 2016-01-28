@@ -3,13 +3,15 @@ simple listing of current dash budget disbursement
 
 # sample output
 
-    estimated minimum budget: 7714.57142857
-           remaining approval name                   payment    
-       7709.57142857 99.8%    2mb-blocksize             5.00
-       6533.57142857 99.4%    core-team              1176.00
-       4433.57142857 98.5%    dash-org               2100.00
-       3823.31142857 97.2%    lamassu-integration     610.26
-       1667.31142857 92.0%    public-awareness       2156.00
-       1527.31142857 88.8%    ds-liquidity            140.00
-        427.31142857 68.3%    transform-pr           1100.00
+    next budget cycle: 20.52 days (11821 blocks)
+    
+    name                 approval payment        remaining
+    estimated budget                         7714.57142857 
+    2mb-blocksize        99.8%       5.00    7709.57142857 
+    core-team            99.4%    1176.00    6533.57142857 
+    dash-org             98.5%    2100.00    4433.57142857 
+    lamassu-integration  97.2%     610.26    3823.31142857 
+    public-awareness     92.0%    2156.00    1667.31142857 
+    ds-liquidity         88.8%     140.00    1527.31142857 
+    transform-pr         68.3%    1100.00     427.31142857 
 
