@@ -24,8 +24,12 @@ budget = 16616 * .1 * min_blok_subsidy(now_block)
 def days(s):
     return 1
 
+import time
 print
-print "next budget cycle: %.2f days (%s blocks)" % (
+print "current time      : %s" % time.strftime("%a, %d %b %Y %H:%M:%S %z")
+
+print "current block     : %s" % now_block
+print "next budget cycle : %.2f days (%s blocks)" % (
         ((next_cycle * 2.5)/1440), next_cycle)
 print
 print "{0:<20} {1:<4} {2:<11} {3:>12}".format('name', 'approval', 'payment', 'remaining')
