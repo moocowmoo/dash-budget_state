@@ -1,5 +1,5 @@
-# dash_budgetstate
-simple listing of current dash budget disbursement
+# dash-budget_state
+forecast estimation of dash budget disbursements
 
 # sample output
 
