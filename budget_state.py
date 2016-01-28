@@ -20,6 +20,7 @@ total_masternodes = int(run_command("dash-cli masternode count"))
 
 cycle_length = 16616
 next_cycle = now_block % cycle_length
+next_cycle_block = now_block + next_cycle
 budget = 16616 * .1 * min_blok_subsidy(now_block)
 def days(s):
     return 1
@@ -37,6 +38,10 @@ print "{0:<20}                {1:18.8f} ".format('estimated budget', budget)
 for pname in pay_order:
     p = proposals[pname]
     if p["RemainingPaymentCount"] < 1:
+        # print " proposal %s payments fulfilled" % pname
+        continue
+    if p["BlockStart"] > next_cycle_block:
+        # print " proposal %s pending" % pname
         continue
     if p["BlockEnd"] < now_block:
         # print " proposal %s expired" % pname
