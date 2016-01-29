@@ -13,6 +13,7 @@ pay_order = sorted(proposals.keys(),
 current_block = int(run_command("dash-cli getblockcount"))
 total_masternodes = int(run_command("dash-cli masternode count"))
 cycle_length = 16616
+budget_days = (576*30)
 
 def min_blok_subsidy(nHeight):
     nSubsidy = float(5)  # assume minimum subsidy
@@ -22,7 +23,7 @@ def min_blok_subsidy(nHeight):
 
 def print_budget(proposals, current_block, cycle_offset):
     current_block = current_block + (cycle_offset * cycle_length)
-    budget = cycle_length * .1 * min_blok_subsidy(current_block)
+    budget = budget_days * .1 * min_blok_subsidy(current_block)
     next_cycle = cycle_length - (current_block % cycle_length) + (cycle_offset * cycle_length)
     next_cycle_block = current_block + next_cycle
     print "next budget : {0:>5.2f} days - block {1:} ({2:>5} blocks)".format(
