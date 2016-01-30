@@ -7,9 +7,15 @@ import yaml
 def run_command(cmd):
     return subprocess.check_output(cmd, shell=True).rstrip("\n")
 
+def net_yeas(proposal):
+    return proposal['Yeas'] - proposal['Nays']
+
 proposals = yaml.load(run_command("dash-cli mnbudget show"))
+for proposal in proposals:
+    proposals[proposal]['net_yeas'] = net_yeas(proposals[proposal])
+
 pay_order = sorted(proposals.keys(),
-                   key=lambda n: proposals[n]['Ratio'])[::-1]
+                   key=lambda n: proposals[n]['net_yeas'])[::-1]
 current_block = int(run_command("dash-cli getblockcount"))
 total_masternodes = int(run_command("dash-cli masternode count"))
 cycle_length = 16616
@@ -28,7 +34,7 @@ def print_budget(proposals, current_block, cycle_offset):
     next_cycle_block = current_block + next_cycle
     print "next budget : {0:>5.2f} days - block {1:} ({2:>5} blocks)".format(
             ((next_cycle * 2.5)/1440), next_cycle_block, next_cycle)
-    print "{0:<20} {1:<4} {2:<11} {3:>12}".format('name', 'approval', 'payment', 'remaining')
+    print "{0:<20} {1:>6} {2:>9} {3:>16}".format('name', 'yeas', 'payment', 'remaining')
     print "{0:<20}                {1:18.8f} ".format('estimated budget', budget)
     for pname in pay_order:
         p = proposals[pname]
@@ -45,7 +51,7 @@ def print_budget(proposals, current_block, cycle_offset):
             # print " proposal %s rejected" % pname
             continue
         budget = budget - p['MonthlyPayment']
-        print "{0:<20} {1:2.1f}%  {2:9.2f} {3:16.8f}".format(pname, 100 * p['Ratio'], p['MonthlyPayment'], budget)
+        print "{0:<20} {1:>6}  {2:8.2f} {3:16.8f}".format(pname, p['net_yeas'], p['MonthlyPayment'], budget)
 
 if __name__ == "__main__":
     print "\ncurrent time      : %s" % time.strftime("%a, %d %b %Y %H:%M:%S %z")
