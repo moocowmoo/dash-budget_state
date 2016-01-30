@@ -1,8 +1,17 @@
 #!/usr/bin/env python
 
 import subprocess
+import sys
 import time
 import yaml
+
+COLOR = True
+GREEN = RED = WHITE = NORMAL = ''
+if COLOR:
+    GREEN = '\x1b[32m'
+    RED = '\x1b[31m'
+    WHITE = '\x1b[1m'
+    NORMAL = '\x1b[0m'
 
 def run_command(cmd):
     return subprocess.check_output(cmd, shell=True).rstrip("\n")
@@ -35,6 +44,7 @@ def print_budget(proposals, current_block, cycle_offset):
     print "next budget : {0:>5.2f} days - block {1:} ({2:>5} blocks)".format(
             ((next_cycle * 2.5)/1440), next_cycle_block, next_cycle)
     print "{0:<20} {1:>6} {2:>9} {3:>16}".format('name', 'yeas', 'payment', 'remaining')
+    sys.stdout.write(WHITE)
     print "{0:<20}                {1:18.8f} ".format('estimated budget', budget)
     for pname in pay_order:
         p = proposals[pname]
@@ -51,6 +61,7 @@ def print_budget(proposals, current_block, cycle_offset):
             # print " proposal %s rejected" % pname
             continue
         budget = budget - p['MonthlyPayment']
+        sys.stdout.write(budget > 0 and GREEN or RED)
         print "{0:<20} {1:>6}  {2:8.2f} {3:16.8f}".format(pname, p['net_yeas'], p['MonthlyPayment'], budget)
 
 if __name__ == "__main__":
@@ -58,4 +69,4 @@ if __name__ == "__main__":
     print "current block     : %s\n" % current_block
     for r in range(0,3):
         print_budget(proposals, current_block, r)
-        print
+        print NORMAL
