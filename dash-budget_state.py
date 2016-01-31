@@ -54,7 +54,7 @@ def print_budget(proposals, current_block, cycle_offset):
         if p["BlockStart"] > next_cycle_block:
             # print " proposal %s pending" % pname
             continue
-        if p["BlockEnd"] < current_block:
+        if p["BlockEnd"] < next_cycle_block:
             # print " proposal %s expired" % pname
             continue
         if p["Yeas"] - p["Nays"] < int(total_masternodes/10):
