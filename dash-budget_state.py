@@ -37,12 +37,12 @@ def min_blok_subsidy(nHeight):
     return nSubsidy
 
 def print_budget(proposals, current_block, cycle_offset):
-    current_block = current_block + (cycle_offset * cycle_length)
-    budget = budget_days * .1 * min_blok_subsidy(current_block)
-    next_cycle = cycle_length - (current_block % cycle_length) + (cycle_offset * cycle_length)
-    next_cycle_block = current_block + next_cycle
+    future_block = current_block + (cycle_offset * cycle_length)
+    budget = budget_days * .1 * min_blok_subsidy(future_block)
+    next_cycle = cycle_length - (future_block % cycle_length)
+    next_cycle_block = future_block + next_cycle
     print "next budget : {0:>5.2f} days - block {1:} ({2:>5} blocks)".format(
-            ((next_cycle * 2.5)/1440), next_cycle_block, next_cycle)
+            ((next_cycle * 2.5)/1440), next_cycle_block, next_cycle_block - current_block )
     print "{0:<20} {1:>6} {2:>9} {3:>16}".format('name', 'yeas', 'payment', 'remaining')
     sys.stdout.write(WHITE)
     print "{0:<20}                {1:18.8f} ".format('estimated budget', budget)
