@@ -60,9 +60,13 @@ def print_budget(proposals, current_block, cycle_offset):
         if p["Yeas"] - p["Nays"] < int(total_masternodes/10):
             # print " proposal %s rejected" % pname
             continue
-        budget = budget - p['MonthlyPayment']
+
+        budget -= p['MonthlyPayment']
         sys.stdout.write(budget > 0 and GREEN or RED)
-        print "{0:<20} {1:>6}  {2:8.2f} {3:16.8f}".format(pname, p['net_yeas'], p['MonthlyPayment'], budget)
+        notfunded = budget > 0 and ' ' or 'insufficient budget'
+        print "{0:<20} {1:>6}  {2:8.2f} {3:16.8f} {4:}".format(pname, p['net_yeas'], p['MonthlyPayment'], budget, notfunded)
+        if budget < 0:
+            budget += p['MonthlyPayment']
 
 if __name__ == "__main__":
     print "\ncurrent time      : %s" % time.strftime("%a, %d %b %Y %H:%M:%S %z")
