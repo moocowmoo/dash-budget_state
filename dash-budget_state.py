@@ -50,7 +50,7 @@ def print_budget(proposals, current_block, cycle_offset):
     print "{0:<20}                {1:18.8f} ".format('estimated budget', budget)
     for pname in pay_order:
         p = proposals[pname]
-        if ( p["RemainingPaymentCount"] - cycle_offset) < 1:
+        if p["RemainingPaymentCount"] < 1:
             # print " proposal %s payments fulfilled" % pname
             continue
         if p["BlockStart"] > next_cycle_block:
@@ -66,6 +66,7 @@ def print_budget(proposals, current_block, cycle_offset):
         budget -= p['MonthlyPayment']
         sys.stdout.write(budget > 0 and GREEN or RED)
         notfunded = budget > 0 and ' ' or 'insufficient budget'
+        p["RemainingPaymentCount"] -= budget > 0 and 1 or 0
         print "{0:<20} {1:>6}  {2:8.2f} {3:16.8f} {4:}".format(pname, p['net_yeas'], p['MonthlyPayment'], budget, notfunded)
         if budget < 0:
             budget += p['MonthlyPayment']
