@@ -6,11 +6,12 @@ import time
 import yaml
 
 COLOR = True
-GREEN = RED = WHITE = NORMAL = ''
+GREEN = RED = WHITE = NORMAL = TEAL = ''
 if COLOR:
     GREEN = '\x1b[32m'
     RED = '\x1b[31m'
     WHITE = '\x1b[1m'
+    TEAL = b'\x1b[36m'
     NORMAL = '\x1b[0m'
 
 def run_command(cmd):
@@ -45,7 +46,7 @@ def print_budget(proposals, current_block, cycle_offset):
     print "next budget : {0:>5.2f} days - block {1:} ({2:>5} blocks)".format(
             ((next_cycle_distance * 2.5)/1440), next_cycle_block, next_cycle_distance )
     print "{0:<20} {1:>6} {2:>9} {3:>16}".format('name', 'yeas', 'payment', 'remaining')
-    sys.stdout.write(WHITE)
+    sys.stdout.write(TEAL)
     print "{0:<20}                {1:18.8f} ".format('estimated budget', budget)
     for pname in pay_order:
         p = proposals[pname]
