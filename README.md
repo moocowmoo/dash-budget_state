@@ -6,34 +6,40 @@ forecast estimation of dash budget disbursements
 
 # sample output
 
-    current time      : Thu, 28 Jan 2016 07:57:12 +0000
-    current block     : 410649
+    current time      : Mon, 01 Feb 2016 07:14:29 +0000
+    current block     : 412830
     
-    next budget :  8.25 days - block 415400 ( 4751 blocks)
-    name                 approval payment        remaining
-    estimated budget                         7714.57142857 
-    2mb-blocksize        99.8%       5.00    7709.57142857
-    core-team            99.4%    1176.00    6533.57142857
-    dash-org             98.5%    2100.00    4433.57142857
-    lamassu-integration  97.2%     610.26    3823.31142857
-    public-awareness     92.0%    2156.00    1667.31142857
-    ds-liquidity         88.8%     140.00    1527.31142857
-    transform-pr         68.3%    1100.00     427.31142857
+    next budget :  4.46 days - block 415400 ( 2570 blocks)
+    name                   yeas   payment        remaining
+    estimated budget                         8022.85714286
+    2mb-blocksize          2148      5.00    8017.85714286
+    lamassu-integration    1971    610.26    7407.59714286
+    core-team              1756   1176.00    6231.59714286
+    dash-org               1453   2100.00    4131.59714286
+    public-awareness       1412   2156.00    1975.59714286
+    satoshi-roundtable      950    717.70    1257.89714286
+    ds-liquidity            893    140.00    1117.89714286
+    transform-pr            743   1100.00      17.89714286
+    soda-reimbursement      452    100.00     -82.10285714 insufficient budget
     
-    next budget : 37.10 days - block 448632 (21367 blocks)
-    name                 approval payment        remaining
-    estimated budget                         7163.53061224 
-    core-team            99.4%    1176.00    5987.53061224
-    dash-org             98.5%    2100.00    3887.53061224
-    lamassu-integration  97.2%     610.26    3277.27061224
-    public-awareness     92.0%    2156.00    1121.27061224
-    ds-liquidity         88.8%     140.00     981.27061224
-    transform-pr         68.3%    1100.00    -118.72938776
+    next budget : 33.31 days - block 432016 (19185 blocks)
+    name                   yeas   payment        remaining
+    estimated budget                         7449.79591837
+    lamassu-integration    1971    610.26    6839.53591837
+    core-team              1756   1176.00    5663.53591837
+    dash-org               1453   2100.00    3563.53591837
+    public-awareness       1412   2156.00    1407.53591837
+    satoshi-roundtable      950    717.70     689.83591837
+    ds-liquidity            893    140.00     549.83591837
+    transform-pr            743   1100.00    -550.16408163 insufficient budget
+    soda-reimbursement      452    100.00     449.83591837
     
-    next budget : 65.94 days - block 481864 (37983 blocks)
-    name                 approval payment        remaining
-    estimated budget                         7163.53061224 
-    core-team            99.4%    1176.00    5987.53061224
-    lamassu-integration  97.2%     610.26    5377.27061224
-    public-awareness     92.0%    2156.00    3221.27061224
-    ds-liquidity         88.8%     140.00    3081.27061224
+    next budget : 62.15 days - block 448632 (35801 blocks)
+    name                   yeas   payment        remaining
+    estimated budget                         7449.79591837
+    lamassu-integration    1971    610.26    6839.53591837
+    core-team              1756   1176.00    5663.53591837
+    public-awareness       1412   2156.00    3507.53591837
+    ds-liquidity            893    140.00    3367.53591837
+    soda-reimbursement      452    100.00    3267.53591837
+
