@@ -82,17 +82,17 @@ def print_budget(proposals, current_block, cycle_offset):
             # print " proposal %s rejected" % pname
             continue
 
-        budget -= int(p['payment_amount'])
+        budget -= float(p['payment_amount'])
         sys.stdout.write(budget > 0 and GREEN or RED)
         notfunded = budget > 0 and ' ' or 'insufficient budget'
 #        p["RemainingPaymentCount"] -= budget > 0 and 1 or 0
-        print "{0:<30} {1:>6}  {2:8.2f} {3:16.8f} {4:}".format(p['name'][:30], p['net_yeas'], int(p['payment_amount']), budget, notfunded)
+        print "{0:<30} {1:>6}  {2:8.2f} {3:16.8f} {4:}".format(p['name'][:30], p['net_yeas'], float(p['payment_amount']), budget, notfunded)
         if budget < 0:
-            budget += int(p['payment_amount'])
+            budget += float(p['payment_amount'])
 
 if __name__ == "__main__":
     print "\ncurrent time      : %s" % time.strftime("%a, %d %b %Y %H:%M:%S %z")
     print "current block     : %s\n" % current_block
-    for r in range(0,4):
+    for r in range(0,3):
         print_budget(proposals, current_block, r)
         print NORMAL
